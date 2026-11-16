@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Baixada Santista - Cidades</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        background-color: #ffffff;
+        font-family: "Inter", sans-serif;
+        overflow-x: hidden;
+      }
+
+      .barra-nav {
+        background-color: #ffffff;
+        border-radius: 50px;
+        padding: 16px 24px;
+        border: 1.5px solid #000000;
+      }
+
+      .banner {
+        position: relative;
+        width: 92%;
+        max-width: 1400px;
+        height: 80vh;
+        min-height: 620px;
+        margin: 0 auto;
+        border-radius: 42px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+      }
+
+      .imagem-fundo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+      }
+
+      .sombra-banner {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          90deg,
+          rgba(0, 0, 0, 0.35) 0%,
+          rgba(0, 0, 0, 0) 65%
+        );
+        z-index: 1;
+        transition: opacity 0.15s ease-out;
+        pointer-events: none;
+      }
+
+      .cidades-intro {
+        position: relative;
+        z-index: 4;
+        color: #ffffff;
+        padding-left: 5rem;
+        max-width: 540px;
+        transition:
+          opacity 0.15s ease-out,
+          transform 0.15s ease-out;
+      }
+
+      .cidades-intro h1 {
+        font-size: clamp(3.5rem, 6vw, 5.5rem);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        margin-bottom: 0.5rem;
+      }
+
+      .cidades-intro p {
+        font-size: 1.35rem;
+        font-weight: 500;
+        line-height: 1.3;
+        margin-bottom: 2rem;
+      }
+
+      .botao-mais {
+        background: #ffffff;
+        color: #000000;
+        border: none;
+        border-radius: 14px;
+        padding: 12px 48px;
+        font-weight: 700;
+        font-size: 1.25rem;
+        transition: transform 0.2s ease;
+      }
+
+      .botao-seta {
+        background: #ffffff;
+        color: #000000;
+        border: none;
+        border-radius: 50%;
+        width: 54px;
+        height: 54px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        transition: transform 0.2s ease;
+      }
+
+      .botao-mais:hover,
+      .botao-seta:hover {
+        transform: scale(1.05);
+      }
+
+      .carrossel {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 3;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 1.5rem;
+        padding: 0 4rem 0 52%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: none;
+      }
+
+      .carrossel::-webkit-scrollbar {
+        display: none;
+      }
+
+      .card-cidade {
+        position: relative;
+        flex: 0 0 200px;
+        height: 255px;
+        background: #ffffff;
+        border-radius: 22px;
+        padding: 12px;
+        text-align: center;
+        cursor: pointer;
+        overflow: hidden;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .card-cidade .caixa-imagem {
+        width: 100%;
+        height: 145px;
+        border-radius: 16px;
+        overflow: hidden;
+        transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+      }
+
+      .card-cidade .caixa-imagem img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .info-pequeno {
+        margin-top: auto;
+        padding-bottom: 4px;
+        transition: opacity 0.25s ease;
+      }
+
+      .info-pequeno .data {
+        font-size: 0.72rem;
+        color: #6c6c6c;
+        margin-bottom: 2px;
+      }
+
+      .info-pequeno .titulo {
+        font-size: 1.35rem;
+        font-weight: 600;
+        color: #2b1d12;
+        margin: 0;
+      }
+
+      .info-gigante {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 1.8rem;
+        text-align: left;
+        color: #ffffff;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.75) 0%,
+          rgba(0, 0, 0, 0) 100%
+        );
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.4s ease;
+        pointer-events: none;
+      }
+
+      .botao-explorar {
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(6px);
+        color: #000000;
+        border: 1px solid #ffffff;
+        border-radius: 50px;
+        padding: 6px 22px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .card-cidade:hover {
+        flex: 0 0 350px;
+        height: 490px;
+        padding: 0;
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+      }
+
+      .card-cidade:hover .caixa-imagem {
+        height: 100%;
+        border-radius: 22px;
+      }
+
+      .card-cidade:hover .info-pequeno {
+        opacity: 0;
+        position: absolute;
+      }
+
+      .card-cidade:hover .info-gigante {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="d-flex justify-content-center py-4">
+      <nav class="barra-nav d-flex gap-4 align-items-center">
+        <a href="index.html" class="text-decoration-none text-muted small"
+          >Início</a
+        >
+        <a href="#" class="text-decoration-none text-dark fw-bold small"
+          >Cidades</a
+        >
+        <a href="#" class="text-decoration-none text-muted small">Sobre</a>
+      </nav>
+    </header>
+
+    <main class="banner" id="banner">
+      <img
+        src="img/Hero section  (1).png"
+        alt="Paisagem"
+        class="imagem-fundo"
+      />
+      <div class="sombra-banner" id="sombraBanner"></div>
+
+      <div class="cidades-intro" id="cidadesIntro">
+        <h1>Cidades</h1>
+        <p>A memorable visit to the city of majestic skyscrapers</p>
+
+        <div class="d-flex align-items-center gap-3">
+          <button class="botao-mais" onclick="abrirCarrossel()">More</button>
+          <button class="botao-seta" onclick="abrirCarrossel()">
+            <i class="bi bi-arrow-up-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="carrossel" id="carrosselTrack">
+        <!-- CARD 1: Santos -->
+        <div class="card-cidade">
+          <div class="caixa-imagem">
+            <img src="img/Santos IMG/santos_fundo.webp" alt="Santos" />
+          </div>
+          <div class="info-pequeno">
+            <p class="data">26 · 01 · 1546</p>
+            <h3 class="titulo">Santos</h3>
+          </div>
+          <div class="info-gigante">
+            <h4 class="fs-4 fw-normal mb-0">Explore mais</h4>
+            <h3 class="fs-3 fw-bold mb-3">
+              Santos<span class="text-primary">.</span>
+            </h3>
+            <div class="d-flex justify-content-between align-items-end">
+              <p
+                class="mb-0"
+                style="font-size: 0.65rem; max-width: 150px; opacity: 0.9"
+              >
+                200 hotels, 345 local flights and 234 bus providers
+              </p>
+              <a href="santos.html" class="botao-explorar">Explore</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-cidade">
+          <div class="caixa-imagem">
+            <img src="img/SaoVicente IMG/saovicente_fundo.webp" alt="São Vicente" />
+          </div>
+          <div class="info-pequeno">
+            <p class="data">22 · 01 · 1532</p>
+            <h3 class="titulo">São Vicente</h3>
+          </div>
+          <div class="info-gigante">
+            <h4 class="fs-4 fw-normal mb-0">Explore mais</h4>
+            <h3 class="fs-3 fw-bold mb-3">
+              São Vicente<span class="text-primary">.</span>
+            </h3>
+            <div class="d-flex justify-content-between align-items-end">
+              <p
+                class="mb-0"
+                style="font-size: 0.65rem; max-width: 150px; opacity: 0.9"
+              >
+                200 hotels, 345 local flights and 234 bus providers
+              </p>
+              <a href="saovicente.html" class="botao-explorar">Explore</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-cidade">
+          <div class="caixa-imagem">
+            <img src="img/PraiaGrande IMG/pg_fundo.jpg" alt="Praia Grande" />
+          </div>
+          <div class="info-pequeno">
+            <p class="data">19 · 01 · 1967</p>
+            <h3 class="titulo">Praia Grande</h3>
+          </div>
+          <div class="info-gigante">
+            <h4 class="fs-4 fw-normal mb-0">Explore mais</h4>
+            <h3 class="fs-3 fw-bold mb-3">
+              Praia Grande<span class="text-primary">.</span>
+            </h3>
+            <div class="d-flex justify-content-between align-items-end">
+              <p
+                class="mb-0"
+                style="font-size: 0.65rem; max-width: 150px; opacity: 0.9"
+              >
+                200 hotels, 345 local flights and 234 bus providers
+              </p>
+              <a href="pg.html" class="botao-explorar">Explore</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-cidade">
+          <div class="caixa-imagem">
+            <img src="img/Guarujá IMG/guaruja_fundo.jpeg" alt="Guarujá" />
+          </div>
+          <div class="info-pequeno">
+            <p class="data">19 · 06 · 1934</p>
+            <h3 class="titulo">Guarujá</h3>
+          </div>
+          <div class="info-gigante">
+            <h4 class="fs-4 fw-normal mb-0">Explore mais</h4>
+            <h3 class="fs-3 fw-bold mb-3">
+              Guarujá<span class="text-primary">.</span>
+            </h3>
+            <div class="d-flex justify-content-between align-items-end">
+              <p
+                class="mb-0"
+                style="font-size: 0.65rem; max-width: 150px; opacity: 0.9"
+              >
+                200 hotels, 345 local flights and 234 bus providers
+              </p>
+              <a href="guaruja.html" class="botao-explorar">Explore</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-cidade">
+          <div class="caixa-imagem">
+            <img src="img/Mongaguá IMG/mongagua_fundo.jpg" alt="Mongaguá" />
+          </div>
+          <div class="info-pequeno">
+            <p class="data">07 · 12 · 1958</p>
+            <h3 class="titulo">Mongaguá</h3>
+          </div>
+          <div class="info-gigante">
+            <h4 class="fs-4 fw-normal mb-0">Explore mais</h4>
+            <h3 class="fs-3 fw-bold mb-3">
+              Guarujá<span class="text-primary">.</span>
+            </h3>
+            <div class="d-flex justify-content-between align-items-end">
+              <p
+                class="mb-0"
+                style="font-size: 0.65rem; max-width: 150px; opacity: 0.9"
+              >
+                200 hotels, 345 local flights and 234 bus providers
+              </p>
+              <a href="mongagua.html" class="botao-explorar">Explore</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-cidade">
+          <div class="caixa-imagem">
+            <img src="img/Itanhaém IMG/itanhaem_fundo.webp" alt="Itanhaém" />
+          </div>
+          <div class="info-pequeno">
+            <p class="data">22 · 04 · 1532</p>
+            <h3 class="titulo">Itanhaém</h3>
+          </div>
+          <div class="info-gigante">
+            <h4 class="fs-4 fw-normal mb-0">Explore mais</h4>
+            <h3 class="fs-3 fw-bold mb-3">
+              Guarujá<span class="text-primary">.</span>
+            </h3>
+            <div class="d-flex justify-content-between align-items-end">
+              <p
+                class="mb-0"
+                style="font-size: 0.65rem; max-width: 150px; opacity: 0.9"
+              >
+                200 hotels, 345 local flights and 234 bus providers
+              </p>
+              <a href="itanhaem.html" class="botao-explorar">Explore</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-cidade">
+          <div class="caixa-imagem">
+            <img src="img/Peruíbe IMG/peruibe_fundo.webp" alt="Peruíbe" />
+          </div>
+          <div class="info-pequeno">
+            <p class="data">18 · 02 · 1959</p>
+            <h3 class="titulo">Peruíbe</h3>
+          </div>
+          <div class="info-gigante">
+            <h4 class="fs-4 fw-normal mb-0">Explore mais</h4>
+            <h3 class="fs-3 fw-bold mb-3">
+              Guarujá<span class="text-primary">.</span>
+            </h3>
+            <div class="d-flex justify-content-between align-items-end">
+              <p
+                class="mb-0"
+                style="font-size: 0.65rem; max-width: 150px; opacity: 0.9"
+              >
+                200 hotels, 345 local flights and 234 bus providers
+              </p>
+              <a href="peruibe.html" class="botao-explorar">Explore</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-cidade">
+          <div class="caixa-imagem">
+            <img src="img/Cubatão IMG/cubatao_fundo.jpg" alt="Cubatão" />
+          </div>
+          <div class="info-pequeno">
+            <p class="data">09 · 04 · 1949</p>
+            <h3 class="titulo">Cubatão</h3>
+          </div>
+          <div class="info-gigante">
+            <h4 class="fs-4 fw-normal mb-0">Explore mais</h4>
+            <h3 class="fs-3 fw-bold mb-3">
+              Guarujá<span class="text-primary">.</span>
+            </h3>
+            <div class="d-flex justify-content-between align-items-end">
+              <p
+                class="mb-0"
+                style="font-size: 0.65rem; max-width: 150px; opacity: 0.9"
+              >
+                200 hotels, 345 local flights and 234 bus providers
+              </p>
+              <a href="cubatao.html" class="botao-explorar">Explore</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-cidade">
+          <div class="caixa-imagem">
+            <img src="img/Bertioga IMG/bertioga_fundo.jpeg" alt="Bertioga" />
+          </div>
+          <div class="info-pequeno">
+            <p class="data">19 · 05 · 1991</p>
+            <h3 class="titulo">Bertioga</h3>
+          </div>
+          <div class="info-gigante">
+            <h4 class="fs-4 fw-normal mb-0">Explore mais</h4>
+            <h3 class="fs-3 fw-bold mb-3">
+              Bertioga<span class="text-primary">.</span>
+            </h3>
+            <div class="d-flex justify-content-between align-items-end">
+              <p
+                class="mb-0"
+                style="font-size: 0.65rem; max-width: 150px; opacity: 0.9"
+              >
+                200 hotels, 345 local flights and 234 bus providers
+              </p>
+              <a href="bertioga.html" class="botao-explorar">Explore</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      const carrosselTrack = document.getElementById("carrosselTrack");
+      const cidadesIntro = document.getElementById("cidadesIntro");
+      const sombraBanner = document.getElementById("sombraBanner");
+
+      function abrirCarrossel() {
+        carrosselTrack.scrollTo({
+          left: 550,
+          behavior: "smooth",
+        });
+      }
+
+      carrosselTrack.addEventListener(
+        "wheel",
+        (e) => {
+          e.preventDefault();
+          carrosselTrack.scrollLeft += e.deltaY + e.deltaX;
+        },
+        { passive: false },
+      );
+
+      carrosselTrack.addEventListener("scroll", () => {
+        const scrollAtual = carrosselTrack.scrollLeft;
+        const distanciaParaSumir = 280;
+
+        const progresso = Math.min(scrollAtual / distanciaParaSumir, 1);
+        const opacidade = 1 - progresso;
+
+        cidadesIntro.style.opacity = opacidade;
+        cidadesIntro.style.transform = `translateX(-${progresso * 60}px)`;
+        sombraBanner.style.opacity = opacidade;
+
+        if (scrollAtual > 80) {
+          cidadesIntro.style.pointerEvents = "none";
+        } else {
+          cidadesIntro.style.pointerEvents = "auto";
+        }
+      });
+    </script>
+  </body>
+</html>

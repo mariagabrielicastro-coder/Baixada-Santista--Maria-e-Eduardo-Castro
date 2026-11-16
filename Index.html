@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Baixada Santista</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gasoek+One&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        color: #2b241d;
+        background-color: #faefe0;
+        overflow-x: hidden;
+      }
+
+      .lado-esquerdo {
+        background-color: #c5dcfa;
+        color: #004ac9;
+        min-height: 100vh;
+      }
+
+      @media (min-width: 992px) {
+        .lado-esquerdo {
+          position: sticky;
+          top: 0;
+          height: 100vh;
+        }
+      }
+
+      .barra-nav {
+        border-radius: 50px;
+        padding: 16px 24px;
+        border: 1.5px solid #000000;
+      }
+
+      .titulo-principal {
+        font-family: "Gasoek One", sans-serif;
+        font-weight: 400;
+        font-size: clamp(2.8rem, 4.8vw, 5.2rem);
+        line-height: 0.9;
+        letter-spacing: -0.01em;
+        text-align: center;
+        color: #004ac9;
+      }
+
+      .faixa-rolante {
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        padding: 1rem 0;
+      }
+
+      .conteudo-faixa {
+        display: inline-flex;
+        gap: 1.5rem;
+        animation: deslizar-faixa 18s linear infinite;
+      }
+
+      @keyframes deslizar-faixa {
+        0% {
+          transform: translateX(179%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+
+      .banner-destaque {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 3rem 1rem;
+        overflow: hidden;
+      }
+
+      .imagem-fundo-areia {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+      }
+
+      .card-destaque {
+        position: relative;
+        z-index: 1;
+        background: #ffffff;
+        border-radius: 18px;
+        padding: 12px;
+        width: 100%;
+        max-width: 310px;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+      }
+
+      .card-destaque img {
+        width: 100%;
+        height: 210px;
+        object-fit: cover;
+        border-radius: 12px;
+      }
+
+      .indicador-rolagem {
+        position: absolute;
+        bottom: 24px;
+        z-index: 1;
+        font-size: 0.75rem;
+        color: #2b241d;
+        text-align: center;
+        line-height: 1.2;
+        font-weight: 500;
+      }
+
+      .secao-cidades {
+        background-color: #faefe0;
+        padding: 5rem 1.5rem 3rem 1.5rem;
+      }
+
+      .card-cidade {
+        background: #ffffff;
+        border-radius: 18px;
+        padding: 12px;
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto 2rem auto;
+        transition: transform 0.2s ease;
+      }
+
+      .card-cidade:hover {
+        transform: translateY(-4px);
+      }
+
+      .card-cidade img {
+        width: 100%;
+        height: 210px;
+        object-fit: cover;
+        border-radius: 12px;
+      }
+
+      .card-data {
+        font-size: 0.7rem;
+        color: #8c857b;
+        letter-spacing: 0.05em;
+        margin-top: 1.2rem;
+        margin-bottom: 0.25rem;
+      }
+
+      .card-titulo {
+        font-size: 1.15rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+
+      .montanha {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin-bottom: -1px;
+      }
+
+      .barra-fim {
+        background-color: #5f6d3b;
+        color: #c5dcfa;
+        padding: 4rem 1.5rem 3rem 1.5rem;
+        text-align: center;
+      }
+
+      .slogan {
+        font-family: "Gasoek One", sans-serif;
+        font-size: clamp(2.5rem, 5vw, 4.2rem);
+        line-height: 0.92;
+        letter-spacing: -0.01em;
+        color: #c5dcfa;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid p-0">
+      <div class="row g-0">
+        <div
+          class="col-12 col-lg-5 lado-esquerdo d-flex flex-column justify-content-between"
+        >
+          <header class="d-flex justify-content-center pt-4">
+            <nav class="barra-nav d-flex gap-4 align-items-center">
+              <a href="#" class="text-decoration-none text-dark fw-bold small"
+                >Início</a
+              >
+              <a
+                href="Cidade.html"
+                class="text-decoration-none text-muted small"
+                >Cidades</a
+              >
+              <a href="#" class="text-decoration-none text-muted small"
+                >Sobre</a
+              >
+            </nav>
+          </header>
+
+          <div
+            class="d-flex flex-column align-items-center text-center px-4 my-auto"
+          >
+            <h1 class="titulo-principal mb-4">Baixada<br />Santista</h1>
+
+            <div class="mb-3" style="width: 120px">
+              <img
+                src="img/Train illustration.png"
+                alt="Ilustração Baixada"
+                class="img-fluid"
+              />
+            </div>
+
+            <p
+              class="fw-medium mb-0"
+              style="max-width: 310px; font-size: 0.95rem; line-height: 1.35"
+            >
+              Conheça tudo sobre um dos principais litorais do país
+            </p>
+          </div>
+
+          <div class="faixa-rolante">
+            <div class="conteudo-faixa small fw-medium align-items-center">
+              <span><i class="bi bi-globe"></i> Located in</span>
+              <span><i class="bi bi-globe"></i> São Paulo, Brasil</span>
+              <span><i class="bi bi-globe"></i> 23.9508° S</span>
+              <span><i class="bi bi-globe"></i> 46.3631° O</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-7">
+          <section class="banner-destaque">
+            <img
+              src="img/Hero section  (1).png"
+              alt="Fundo Areia"
+              class="imagem-fundo-areia"
+            />
+
+            <div class="card-destaque text-center">
+              <img src="img/Free Lightbox in the City Mockup (Community)/baixada.jpg" alt="Baixada Santista" />
+              <p class="card-data">Conheça sobre</p>
+              <h2 class="card-titulo">Baixada Santista</h2>
+            </div>
+
+            <div class="indicador-rolagem">Scroll for more<br />↓</div>
+          </section>
+
+          <section class="secao-cidades text-center">
+            <h2
+              class="fw-semibold mb-5"
+              style="font-size: 2rem; letter-spacing: -0.02em"
+            >
+              Algumas Cidades da Baixada
+            </h2>
+
+            <div class="card-cidade">
+              <a
+                href="Cidade.html"
+                style="color: inherit; text-decoration: none"
+              >
+                <img src="img/SaoVicente IMG/saovicente_fundo.webp" alt="São Vicente" />
+                <p class="card-data">22 de janeiro, 1532</p>
+                <h3 class="card-titulo">Sao Vicente</h3>
+              </a>
+            </div>
+
+            <div class="card-cidade">
+              <a
+                href="Cidade.html"
+                style="color: inherit; text-decoration: none"
+              >
+                <img src="img/PraiaGrande IMG/pg_fundo.jpg" alt="Praia Grande" />
+                <p class="card-data">19 de Janeiro, 1967</p>
+                <h3 class="card-titulo">Praia Grande</h3>
+              </a>
+            </div>
+
+            <div class="card-cidade">
+              <a
+                href="Cidade.html"
+                style="color: inherit; text-decoration: none"
+              >
+                <img src="img/Santos IMG/santos_fundo.webp" alt="Santos" />
+                <p class="card-data">1 de Novembro, 1546</p>
+                <h3 class="card-titulo">Santos</h3>
+              </a>
+            </div>
+
+            <div class="card-cidade">
+              <a
+                href="Cidade.html"
+                style="color: inherit; text-decoration: none"
+              >
+                <img src="img/Guarujá IMG/guaruja_fundo.jpeg" alt="Guarujá" />
+                <p class="card-data"> 2 de setembro, 1893</p>
+                <h3 class="card-titulo">Guaruja</h3>
+              </a>
+            </div>
+
+            <div class="mt-4">
+              <a
+                href="Cidade.html"
+                class="text-dark small text-decoration-underline"
+                >View all articles</a
+              >
+            </div>
+          </section>
+
+          <img src="img/Border a.png" alt="Divisória" class="montanha" />
+
+          <footer class="barra-fim">
+            <p class="small mb-2">Fim da Pagina</p>
+
+            <h2 class="slogan mb-4">Da serra<br />Para o mar.</h2>
+
+            <nav class="d-flex justify-content-center gap-3 mb-4 small">
+              <a href="#" class="text-reset text-decoration-underline"
+                >Inicio</a
+              >
+              <a href="Cidade.html" class="text-reset text-decoration-underline"
+                >Cidades</a
+              >
+              <a href="#" class="text-reset text-decoration-underline">Sobre</a>
+            </nav>
+
+            <p class="mb-0" style="font-size: 0.7rem; opacity: 0.8">
+              Feito por Michael, Pedro Gabriel, Heitor, Maria e Eduardo
+            </p>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

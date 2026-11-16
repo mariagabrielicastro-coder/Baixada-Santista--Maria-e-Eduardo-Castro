@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Baixada Santista - Santos</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        background-color: #ffffff;
+        color: #2b241d;
+        font-family: "Inter", sans-serif;
+        overflow-x: hidden;
+      }
+
+      .barra-nav {
+        background-color: #ffffff;
+        border: 1.5px solid #2b241d;
+        border-radius: 50px;
+        padding: 16px 24px;
+        display: inline-flex;
+        align-items: center;
+        gap: 24px;
+      }
+
+      .banner-cidade {
+        width: 94%;
+        max-width: 1320px;
+        margin: 0 auto;
+      }
+
+      .imagem-banner {
+        width: 100%;
+        height: 440px;
+        object-fit: cover;
+        border-radius: 24px;
+      }
+
+      .artigo {
+        max-width: 680px;
+        margin: 0 auto;
+        padding: 4rem 1.25rem;
+      }
+
+      .titulo-cidade {
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        margin-bottom: 0.75rem;
+      }
+
+      .info-cidade {
+        font-size: 0.85rem;
+        color: #555;
+      }
+
+      .linha-pontilhada {
+        border: none;
+        border-top: 1.5px dotted #b8b2a8;
+        margin: 3rem 0;
+        opacity: 1;
+      }
+
+      .texto-artigo {
+        max-width: 540px;
+        margin: 0 auto;
+      }
+
+      .texto-artigo p {
+        font-size: 0.95rem;
+        line-height: 1.65;
+        color: #3a332c;
+        margin-bottom: 1.75rem;
+      }
+
+      .foto-artigo {
+        width: 100%;
+        height: 330px;
+        object-fit: cover;
+        border-radius: 16px;
+        margin: 1rem 0 2.5rem 0;
+      }
+
+      .galeria-verde {
+        background-color: #5f6d3b;
+        padding-top: 5rem;
+      }
+
+      .galeria {
+        max-width: 650px;
+        margin: 0 auto;
+        padding: 0 1.25rem;
+      }
+
+      .titulo-galeria {
+        color: #e7eccf;
+        font-size: 2rem;
+        font-weight: 500;
+        letter-spacing: -0.02em;
+      }
+
+      .card-foto {
+        background: #ffffff;
+        border-radius: 18px;
+        padding: 12px;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.2s ease;
+      }
+
+      .card-foto:hover {
+        transform: translateY(-4px);
+      }
+
+      .card-foto img {
+        width: 100%;
+        height: 195px;
+        object-fit: cover;
+        border-radius: 12px;
+      }
+
+      .data-foto {
+        font-size: 0.68rem;
+        color: #8c857b;
+        letter-spacing: 0.05em;
+        margin-top: 1rem;
+        margin-bottom: 0.25rem;
+      }
+
+      .legenda-foto {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #2b241d;
+        line-height: 1.3;
+        margin-bottom: 0.75rem;
+        padding: 0 0.5rem;
+      }
+
+      .montanha {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin-top: 4rem;
+        margin-bottom: -1px;
+      }
+
+      .barra-fim {
+        background-color: #f8f1e5;
+        padding: 4rem 1rem 3rem 1rem;
+        text-align: center;
+      }
+
+      .slogan-fim {
+        font-family: "Gasoek One", sans-serif;
+        font-size: clamp(2.4rem, 6vw, 4rem);
+        line-height: 0.92;
+        letter-spacing: -0.01em;
+        color: #2b241d;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="d-flex justify-content-center py-3">
+      <nav class="barra-nav shadow-sm">
+        <a href="index.html" class="text-decoration-none text-muted small"
+          >Início</a
+        >
+        <a
+          href="cidade.html"
+          class="text-decoration-none text-dark fw-bold small"
+          >Cidades</a
+        >
+        <a href="#" class="text-decoration-none text-muted small">Sobre</a>
+      </nav>
+    </header>
+
+    <div class="banner-cidade">
+      <img
+        src="img/Santos IMG/santos1.png"
+        alt="Santos"
+        class="imagem-banner"
+      />
+    </div>
+
+    <main class="artigo">
+      <div class="text-center">
+        <h1 class="titulo-cidade">Santos</h1>
+
+        <div
+          class="d-flex justify-content-center align-items-center gap-4 info-cidade"
+        >
+          <span><i class="bi bi-calendar3 me-1"></i> 1 de Novembro, 1546</span>
+          <a href="#" class="text-decoration-none" style="color: #004ac9">
+            <i class="bi bi-geo-alt me-1"></i>-23.9406° S, -46.3297° W
+          </a>
+        </div>
+      </div>
+
+      <hr class="linha-pontilhada" />
+
+      <article class="texto-artigo">
+        <p>
+          Santos respira a imponência de sua trajetória ligada ao café e ao desenvolvimento de um porto que move o país, 
+          misturando ruas de paralelepípedo com o pulsar de uma metrópole moderna.
+        </p>
+
+        <img
+          src="img/Santos IMG/santos10.jpeg"
+          alt="Orla de Praia Grande"
+          class="foto-artigo"
+        />
+
+        <p>
+          No Centro, o bonde turístico serpenteia por prédios que preservam a memória do século passado, 
+          onde o cheiro do grão torrado ainda flutua no ar. Nos bairros residenciais, 
+          os canais cortam a paisagem urbana e funcionam como pontos de referência para quem cruza o município todos os dias.
+        </p>
+
+        <p>
+          Mais do que o principal motor econômico da região, a cidade se expandiu acolhendo museus ricos, 
+          universidades e uma infraestrutura completa que dita as regras do crescimento da Baixada Santista
+        </p>
+
+        <img
+          src="img/Santos IMG/santos6.jpeg"
+          alt="Paisagem de Santos"
+          class="foto-artigo"
+        />
+
+        <p class="mb-0">
+          Explorar o coração desse polo litorâneo não é apenas compreender sua importância logística, 
+          mas descobrir uma identidade que equilibra perfeitamente tradição e progresso.
+        </p>
+      </article>
+
+      <hr class="linha-pontilhada" />
+
+      <div class="text-center pt-2">
+        <img
+          src="img/Plane illustration.png"
+          alt="Ilustração"
+          style="width: 110px"
+          class="img-fluid"
+        />
+      </div>
+    </main>
+
+    <section class="galeria-verde">
+      <div class="galeria">
+        <h2 class="titulo-galeria text-center mb-5">Fotos de Santos</h2>
+
+        <div class="row g-3">
+          <div class="col-12 col-md-6">
+            <div class="card-foto">
+              <img src="img/Santos IMG/santos7.jpeg" alt="Foto 1" />
+              <p class="data-foto">12 · 20 · 22</p>
+              <h3 class="legenda-foto">
+                Emissário Submarino (Parque Roberto Mário Santini)
+              </h3>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <div class="card-foto">
+              <img src="img/Santos IMG/santos8.jpeg" alt="Foto 2" />
+              <p class="data-foto">05 · 19 · 23</p>
+              <h3 class="legenda-foto">
+                Canais e muretas de Santos
+              </h3>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <div class="card-foto">
+              <img src="img/Santos IMG/santos10.jpeg" alt="Foto 3" />
+              <p class="data-foto">11 · 16 · 26</p>
+              <h3 class="legenda-foto"> Praça da Independência no Gonzaga</h3>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <div class="card-foto">
+              <img src="img/Santos IMG/santos9.jpeg" alt="Foto 4" />
+              <p class="data-foto">01 · 03 · 25</p>
+              <h3 class="legenda-foto">Deck do pescador na Ponta da Praia</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <img src="img/Border.png" alt="Divisória montanha" class="montanha" />
+    </section>
+
+    <footer class="barra-fim">
+      <p class="small fw-medium mb-2" style="font-size: 0.75rem">
+        Fim da Página
+      </p>
+
+      <h2 class="slogan-fim mb-4">Menos rotina.<br />Mais litoral.</h2>
+
+      <nav class="d-flex justify-content-center gap-3">
+        <a
+          href="index.html"
+          class="text-dark text-decoration-underline"
+          style="font-size: 0.72rem"
+          >Início</a
+        >
+        <a
+          href="cidades.html"
+          class="text-dark text-decoration-underline"
+          style="font-size: 0.72rem"
+          >Cidades</a
+        >
+        <a
+          href="#"
+          class="text-dark text-decoration-underline"
+          style="font-size: 0.72rem"
+          >Sobre</a
+        >
+      </nav>
+    </footer>
+  </body>
+</html>
